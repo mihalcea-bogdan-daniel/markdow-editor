@@ -1,4 +1,4 @@
-import React, { SyntheticEvent } from "react";
+import React from "react";
 import "./Editor.scss";
 import defaultText from "./defaultText"
 import MarkdownIt from "markdown-it";
