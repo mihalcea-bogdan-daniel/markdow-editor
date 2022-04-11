@@ -33,11 +33,11 @@ Your users should be able to:
 ## Design to replicate
 
 ### Desktop [⬆️](#brief)
-<img src="/notes/Desktop.jpg" alt="dektop">
+<img src="/notes/Desktop.jpg" alt="dektop" width="400">
 
 ### Tablet [⬆️](#brief)
-<img src="/notes/Tablet.jpg" alt="dektop">
+<img src="/notes/Tablet.jpg" alt="tablet" width="400">
 
 ### Mobile [⬆️](#brief)
-<img src="/notes/Mobile.jpg" alt="dektop">
+<img src="/notes/Mobile.jpg" alt="mobile" width="400">
 
