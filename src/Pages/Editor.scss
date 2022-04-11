@@ -1,37 +1,44 @@
 @use "../styles/_colors";
 
-.editor-container{
+.editor-container {
+    position: relative;
     width: 100%;
-    min-height: 100vh;
     display: inline-flex;
     justify-content: space-evenly;
     background-color: colors.$main-secondary;
-    .vertical-separator{
-     padding: 5px;   
-     display: flex;
-     &::after{
-         content: "";
-         background-color: colors.$header;
-         min-width: 2px;
-         min-height: 100vh;
-     }
-    }
-    article{
-        
-        textarea.text-input{
-            width: 50vw;
-            position: relative;
-            resize: horizontal;
-            height: 100vh;
-        }
-        &.text-output{
-            width: 50vw;
-            position: relative;
-            resize: horizontal;
-            height: 100vh;
+
+    .vertical-separator {
+        display: flex;
+
+        &::after {
+            content: "";
+            background-color: colors.$header;
+            min-width: 2px;
+            min-height: 100vh;
         }
     }
-    aside{
+
+    article {
+        textarea.text-input {
+            width: 50vw;
+            position: relative;
+            resize: none;
+            height: 95vh;
+            font-size: 1.2rem;
+            background-color: colors.$main-secondary;
+            color: colors.$text;
+            //Remove borders when active
+            border: none;
+            box-shadow: none;
+            outline: none;
+            //Padding for visibility
+            padding-left: 20px;
+            padding-top: 20px;
+            padding-right: 20px;
+        }
+    }
+
+    aside {
         flex-grow: 1;
     }
 }
