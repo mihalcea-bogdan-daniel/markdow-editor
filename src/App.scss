@@ -1,0 +1,8 @@
+@use "./styles/_colors";
+
+
+:root, body{
+  background-color: colors.$main;
+  color:colors.$text;
+  font-family: 'Courier New', Courier, monospace;
+}
