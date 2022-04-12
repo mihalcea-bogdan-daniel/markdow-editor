@@ -1,0 +1,24 @@
+@use "./colors" as c;
+
+@mixin rounded_scroll_bar() {
+    &::-webkit-scrollbar {
+        width: 20px;
+        background-color: #00000000;
+        z-index: 10000;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: c.$text;
+        width: 15px;
+        border-radius: 9990px;
+        background-clip: padding-box;
+        border: 7px solid rgba(0, 0, 0, 0);
+        cursor:pointer;
+        &:hover{
+            background-color: c.$accent;
+        }
+        &:active{
+            background-color: rgba($color: c.$accent, $alpha: 0.5);
+        }
+    }
+}

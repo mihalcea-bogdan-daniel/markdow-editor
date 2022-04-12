@@ -1,33 +1,51 @@
 import React from "react";
 import "./Editor.scss";
-import defaultText from "./defaultText"
+import defaultText from "./defaultText";
 import MarkdownIt from "markdown-it";
 import DOMPurify from "dompurify";
 
-
-
 const Editor = () => {
   const [inputValue, setInputValue] = React.useState(defaultText);
-  const Sanitize = (htmlString:string)=>{
-    const md = new MarkdownIt({html: true, linkify: true, typographer:true});
-    return DOMPurify.sanitize(md.render(htmlString))
-  }
-  const handleInput = (e:React.ChangeEvent<HTMLTextAreaElement>)=>{
+  const Sanitize = (htmlString: string) => {
+    const md = new MarkdownIt({ html: true, linkify: true, typographer: true });
+    return DOMPurify.sanitize(md.render(htmlString));
+  };
+  const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
-  }
+  };
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     setInputValue(defaultText);
-  },[])
+  }, []);
 
   return (
     <div className="editor-container">
       <article>
-      <textarea className="text-input" autoFocus onInput={handleInput} defaultValue={inputValue as string}></textarea>
+        <h2 className="page-header2">MARKDOWN INPUT</h2>
+        <textarea
+          className="markdown-input"
+          autoFocus
+          onInput={handleInput}
+          defaultValue={inputValue as string}
+        ></textarea>
       </article>
-      {/* Needs sanitizier for dangerous HTML elements display will use dompurify for the sake of exercise */}
+      
       <div className="vertical-separator"></div>
-      <aside dangerouslySetInnerHTML={{__html:Sanitize(inputValue)}}></aside>
+      <article className="output-container">
+        {/* This header is identified as page-header2 to not intervene on the markdown
+        2 posibilities emerge from here
+         - 1. Separate typography
+         - 2. Make the output a styled component with his own theme */}
+        <h2 className="page-header2">PREVIEW</h2>
+        {/* Needs sanitizier for dangerous HTML elements display 
+      will use dompurify for the sake of exercise 
+       [markdownit security docs](adasdsa)*/}
+        <output
+          className="markdown-output"
+          dangerouslySetInnerHTML={{ __html: Sanitize(inputValue) }}
+          aria-live="polite"
+        ></output>
+      </article>
     </div>
   );
 };

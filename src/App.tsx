@@ -1,6 +1,6 @@
-import React from 'react';
-import Editor from './Pages/Editor';
-import './App.scss';
+import React from "react";
+import Editor from "./Pages/Editor";
+import "./App.scss";
 
 function App() {
   return (

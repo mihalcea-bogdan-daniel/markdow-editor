@@ -1,4 +1,5 @@
 @use "../styles/_colors";
+@use "../styles/_scrollbar"as sb;
 
 .editor-container {
     position: relative;
@@ -19,7 +20,9 @@
     }
 
     article {
-        textarea.text-input {
+        
+        textarea.markdown-input {
+            padding-left: 20px;
             width: 50vw;
             position: relative;
             resize: none;
@@ -31,17 +34,27 @@
             border: none;
             box-shadow: none;
             outline: none;
-            //Padding for visibility
-            padding-left: 20px;
-            padding-top: 20px;
-            padding-right: 20px;
+            //If this is not set than the cursor will not change to pointer
+            cursor: auto;
+            @include sb.rounded_scroll_bar;
         }
-    }
 
-    aside {
-        flex-grow: 1;
-        padding: 20px;
-        overflow: auto;
-        height: 95vh;
+        output.markdown-output {
+            display: inline-block;
+            flex-grow: 1;
+            overflow: auto;
+            height: 95vh;
+            overflow-y: scroll;
+            padding-left: 20px;
+            @include sb.rounded_scroll_bar;
+        }
+        h2.page-header2{
+           padding: 5px 20px; 
+           margin: auto 0;
+           font-size: 1.2em;
+           font-weight: 400;
+           background-color: colors.$header;
+        }
+
     }
 }
