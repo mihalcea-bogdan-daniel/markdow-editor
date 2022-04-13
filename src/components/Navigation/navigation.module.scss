@@ -1,3 +1,83 @@
-nav{
+@use "../../styles/colors"as c;
+@use "../../styles/breakpoints"as bp;
+
+$nav-height: 4rem;
+
+nav {
+  display: flex;
+  align-items: center;
+  background-color: c.$main-medium;
+  overflow: hidden;
+  max-height: $nav-height;
+  
+  
+  .square {
+    display: inline-block;
+    position: relative;
+    min-height: $nav-height;
+    min-width: $nav-height;
+  }
+
+  @include bp.for-desktop-down {
+    max-height: 3rem;
+  }
+
+  .h1 {
+    padding: 0 20px;
+    font-weight: 600;
+    letter-spacing: 9px;
+    font-size: 1em;
     display: flex;
+    align-items: center;
+
+    @include bp.for-desktop-down {
+      display: none;
+    }
+
+    &::after {
+      content: "";
+      margin-left: 10px;
+      display: inline-block;
+      max-height: 35px;
+      min-height: 35px;
+      background-color: c.$text-secondary;
+      min-width: 1px;
+      max-width: 1px;
+    }
+  }
+
+  .navitemscontainer {
+    
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    @include bp.for-desktop-down {
+      padding-left: 5px;
+    }
+    .navItem {
+      display: flex;
+      
+      .description {
+        color: c.$text-secondary;
+        padding: 3px 0;
+        font-size: 0.8rem;
+
+        @include bp.for-desktop-down {
+          display: none;
+        }
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        padding: 0 10px;
+      }
+    }
+
+  }
+
+
 }

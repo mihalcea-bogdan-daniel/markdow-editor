@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import styles from "./Input.module.scss";
 
-const Input = () => {
+type InputProps = {
+  placeHolder?: string;
+};
+
+const Input = ({ placeHolder, ...props }: InputProps) => {
   return (
-    <div>Input</div>
-  )
-}
+    <input type="text" placeholder={placeHolder} className={styles.input} />
+  );
+};
 
 export default Input;

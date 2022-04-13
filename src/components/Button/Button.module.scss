@@ -1,0 +1,44 @@
+@use "../../styles/colors"as c;
+@use "../../styles/breakpoints"as bp;
+
+.button {
+  background-color: c.$accent;
+  padding: 8px 16px;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box;
+  box-shadow: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  @include bp.for-desktop-down {
+    padding: 8px;
+  }
+
+  .text {
+    padding: 0;
+    margin: 0;
+    color: c.$text;
+    font-weight: 500;
+    @include bp.for-desktop-down {
+      display: none;
+    }
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &:hover {
+    background-color: c.$accent-hover;
+  }
+
+  &:active {
+    background-color: c.$accent-active;
+  }
+}

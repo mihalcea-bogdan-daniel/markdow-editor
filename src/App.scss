@@ -1,22 +1,27 @@
 @use "./styles/_colors";
 
 
-:root, body{
-  background-color: colors.$main;
-  color:colors.$text;
+:root,
+body {
+  background-color: colors.$main-medium;
+  color: colors.$text;
   font-family: Montserrat, Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  
+
 }
 
-code{
+code {
   background-color: colors.$main-medium;
   padding: 0 0.3rem;
   border-radius: 3px;
 }
-a{
+
+a {
   color: colors.$accent;
-  
+  text-decoration: underline;
+  &:visited {
+    color: rgba($color: #d16abb, $alpha: 1.0);
+  }
 }

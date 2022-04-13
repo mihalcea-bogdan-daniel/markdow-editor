@@ -1,13 +1,26 @@
 import React from "react";
 import Editor from "./Pages/Editor";
-import Navigation from "./components/Navigation/Navigation";
+import { NavBar, NavItem } from "./components/Navigation/Navigation";
+import { DocumentIcon, SaveIcon } from "@heroicons/react/outline";
+import Input from "./components/Input/Input";
+import Button from "./components/Button/Button";
 import "./App.scss";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Navigation></Navigation>
+        <NavBar logoTitle="MARKDOWN">
+          <NavItem
+            icon={<DocumentIcon width="30px" />}
+            description="Document name"
+          >
+            <Input placeHolder="Document title"></Input>
+          </NavItem>
+          <NavItem>
+            <Button icon={<SaveIcon width="20px" />} buttonText="Save Changes"></Button>
+          </NavItem>
+        </NavBar>
       </header>
       <main>
         <Editor></Editor>

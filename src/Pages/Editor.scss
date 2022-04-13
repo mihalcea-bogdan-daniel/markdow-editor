@@ -2,59 +2,64 @@
 @use "../styles/_scrollbar"as sb;
 
 .editor-container {
-    position: relative;
-    width: 100%;
-    display: inline-flex;
-    justify-content: space-evenly;
-    background-color: colors.$main-secondary;
+  position: relative;
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-evenly;
+  background-color: colors.$main;
 
-    .vertical-separator {
-        display: flex;
+  .vertical-separator {
+    display: flex;
 
-        &::after {
-            content: "";
-            background-color: colors.$header;
-            min-width: 2px;
-            min-height: 100vh;
-        }
+    &::after {
+      content: "";
+      background-color: colors.$main-medium;
+      min-width: 2px;
+      min-height: 100vh;
+    }
+  }
+
+  article {
+    textarea.markdown-input {
+      padding-left: 20px;
+      width: 50vw;
+      position: relative;
+      resize: none;
+      height: 95vh;
+      font-size: 1.2rem;
+      background-color: inherit;
+      color: colors.$text;
+      //Remove borders when active
+      border: none;
+      box-shadow: none;
+      outline: none;
+      //If this is not set than the cursor will not change to pointer
+      cursor: auto;
+      @include sb.rounded_scroll_bar;
     }
 
-    article {
-        
-        textarea.markdown-input {
-            padding-left: 20px;
-            width: 50vw;
-            position: relative;
-            resize: none;
-            height: 95vh;
-            font-size: 1.2rem;
-            background-color: colors.$main-secondary;
-            color: colors.$text;
-            //Remove borders when active
-            border: none;
-            box-shadow: none;
-            outline: none;
-            //If this is not set than the cursor will not change to pointer
-            cursor: auto;
-            @include sb.rounded_scroll_bar;
-        }
-
-        output.markdown-output {
-            display: inline-block;
-            flex-grow: 1;
-            overflow: auto;
-            height: 95vh;
-            overflow-y: scroll;
-            padding-left: 20px;
-            @include sb.rounded_scroll_bar;
-        }
-        h2.page-header2{
-           padding: 5px 20px; 
-           margin: auto 0;
-           font-size: 1.2em;
-           font-weight: 400;
-           background-color: colors.$header;
-        }
-
+    output.markdown-output {
+      display: inline-block;
+      flex-grow: 1;
+      overflow: auto;
+      height: 95vh;
+      overflow-y: scroll;
+      padding-left: 20px;
+      @include sb.rounded_scroll_bar;
     }
+
+    h2.page-header2 {
+      // padding: 10px 20px;
+      margin: auto 0;
+      font-size: 0.9em;
+      letter-spacing: 2px;
+      font-weight: 400;
+      background-color: colors.$header;
+      span{
+        padding: 10px;
+        margin: 10px;
+      }
+    }
+
+  }
 }

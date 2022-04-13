@@ -3,6 +3,7 @@ import "./Editor.scss";
 import defaultText from "./defaultText";
 import MarkdownIt from "markdown-it";
 import DOMPurify from "dompurify";
+import { EyeIcon } from "@heroicons/react/outline";
 
 const Editor = () => {
   const [inputValue, setInputValue] = React.useState(defaultText);
@@ -21,7 +22,7 @@ const Editor = () => {
   return (
     <div className="editor-container">
       <article>
-        <h2 className="page-header2">MARKDOWN INPUT</h2>
+        <h2 className="page-header2">MARKDOWN</h2>
         <textarea
           className="markdown-input"
           autoFocus
@@ -29,14 +30,17 @@ const Editor = () => {
           defaultValue={inputValue as string}
         ></textarea>
       </article>
-      
+
       <div className="vertical-separator"></div>
       <article className="output-container">
         {/* This header is identified as page-header2 to not intervene on the markdown
         2 posibilities emerge from here
          - 1. Separate typography
          - 2. Make the output a styled component with his own theme */}
-        <h2 className="page-header2">PREVIEW</h2>
+        <h2 className="page-header2">
+          <span>PREVIEW</span>
+          <EyeIcon width={14}></EyeIcon>
+        </h2>
         {/* Needs sanitizier for dangerous HTML elements display 
       will use dompurify for the sake of exercise 
        [markdownit security docs](adasdsa)*/}
