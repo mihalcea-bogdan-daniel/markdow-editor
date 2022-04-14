@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./MenuButoon.module.scss";
 const MenuButton = () => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(!open);
   };
-  useEffect(() => {
-    console.log(styles);
-  }, []);
-
   return (
     <button
       className={`${styles.menu} ${open ? styles.opened : ""}`}
@@ -18,8 +14,8 @@ const MenuButton = () => {
       <svg
         className={styles.svg}
         width={64}
-        height={68}
-        viewBox="-30 10 160 80"
+        height={70}
+        viewBox="-30 0 160 90"
       >
         <path
           className={`${styles.line} ${styles.line1}`}

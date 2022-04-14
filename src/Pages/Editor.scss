@@ -1,31 +1,69 @@
 @use "../styles/_colors";
 @use "../styles/_scrollbar"as sb;
+@use "../styles/_breakpoints"as bp;
+
+main {
+  background-color: colors.$main-medium;
+}
 
 .editor-container {
   position: relative;
-  width: 100%;
-  display: inline-flex;
-  justify-content: space-evenly;
-  background-color: colors.$main;
+  // width: 100%;
+  // display: inline-flex;
+  // justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background-color: colors.$main-medium;
 
-  .vertical-separator {
-    display: flex;
+  @include bp.for-phone-only {
+    display: block;
+  }
 
-    &::after {
-      content: "";
-      background-color: colors.$main-medium;
-      min-width: 2px;
-      min-height: 100vh;
+  .preview-button {
+    visibility: hidden;
+  }
+  @include bp.for-phone-only {
+    display: block;
+    .preview-button {
+      z-index: 1000;
+      visibility: visible;
     }
   }
 
   article {
+    &.editor {
+      z-index: 9;
+
+      @include bp.for-phone-only {
+        position: relative;
+      }
+    }
+
+    &.markdown-output {
+
+      @include bp.for-phone-only {
+        position: absolute;
+        bottom: 0;
+        opacity: 0.0;
+        transition: z-index 0.5s step-end, opacity 0.5s cubic-bezier(.17, .67, .53, .95);
+        z-index: 0;
+
+        &.active {
+          opacity: 1.0;
+          transition: z-index 0.5s step-start, opacity 0.5s cubic-bezier(.17, .67, .53, .95);
+          z-index: 10;
+        }
+      }
+    }
+
     textarea.markdown-input {
-      padding-left: 20px;
-      width: 50vw;
+      padding: 0;
       position: relative;
+      min-width: 100%;
+      height: 90vh;
+      min-height: 90vh;
       resize: none;
-      height: 95vh;
       font-size: 1.2rem;
       background-color: inherit;
       color: colors.$text;
@@ -33,31 +71,37 @@
       border: none;
       box-shadow: none;
       outline: none;
+      background-color: colors.$main;
       //If this is not set than the cursor will not change to pointer
       cursor: auto;
       @include sb.rounded_scroll_bar;
+
     }
 
     output.markdown-output {
       display: inline-block;
-      flex-grow: 1;
       overflow: auto;
-      height: 95vh;
+      min-width: 98%;
       overflow-y: scroll;
       padding-left: 20px;
       @include sb.rounded_scroll_bar;
+      max-height: 90vh;
+      height: 90vh;
+      background-color: colors.$main;
+
     }
 
     h2.page-header2 {
-      // padding: 10px 20px;
       margin: auto 0;
       font-size: 0.9em;
       letter-spacing: 2px;
       font-weight: 400;
       background-color: colors.$header;
-      span{
-        padding: 10px;
-        margin: 10px;
+      display: flex;
+      align-items: center;
+
+      span {
+        padding: 10px 20px;
       }
     }
 

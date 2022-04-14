@@ -1,10 +1,10 @@
-@use "./styles/_colors";
+@use "./styles/_colors" as c;
 
 
 :root,
 body {
-  background-color: colors.$main-medium;
-  color: colors.$text;
+  background-color: c.$main-medium;
+  color: c.$text;
   font-family: Montserrat, Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
@@ -13,15 +13,21 @@ body {
 }
 
 code {
-  background-color: colors.$main-medium;
+  background-color: c.$main-medium;
   padding: 0 0.3rem;
   border-radius: 3px;
 }
 
 a {
-  color: colors.$accent;
+  color: c.$accent;
   text-decoration: underline;
   &:visited {
     color: rgba($color: #d16abb, $alpha: 1.0);
+  }
+  &:hover {
+    color: c.$accent-hover;
+  }
+  &:active {
+    color: c.$accent-active;
   }
 }

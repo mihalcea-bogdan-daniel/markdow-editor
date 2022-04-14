@@ -1,4 +1,4 @@
-const defaultText:string = `# Simple markdown editor named \`Mark⬇️\`
+const defaultText:string = `# Simple markdown editor named <span style="letter-spacing: 10px">\`Markdown\`</span>
 
 Built with React for practice based on the [Challenge #3](https://www.frontendmentor.io/challenges/inbrowser-markdown-editor-r16TrrQX9) from [frontendmentor.io](https://www.frontendmentor.io).
 
@@ -25,7 +25,7 @@ Your users should be able to:
 
 ## Ideas  
 
-* Extend the project to add your own functionality e.g. add support for images, optimise for saving the formatted markdown as a PDF
+* Extend the project to add your own functionality e.g. add support for images, optimize for saving the formatted markdown as a PDF
 * Train your eye for detail by getting your solution as close to the design as you can
 * ~~Use a JavaScript framework/library to practice building using components~~
 * Try estimating the time it will take for you to build the project. Then see if the time taken matches up to your estimate. Project estimations are a skill that is often overlooked but is important for professional developers

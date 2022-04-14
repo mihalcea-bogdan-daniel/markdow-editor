@@ -18,7 +18,7 @@ function App() {
             <Input placeHolder="Document title"></Input>
           </NavItem>
           <NavItem>
-            <Button icon={<SaveIcon width="20px" />} buttonText="Save Changes"></Button>
+            <Button icon={<SaveIcon width="20px" />} buttonText="Save Changes" aria-label="Save changes"></Button>
           </NavItem>
         </NavBar>
       </header>
