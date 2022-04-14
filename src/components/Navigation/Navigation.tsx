@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Navigation.module.scss";
+import styles from "./navigation.module.scss";
 import MenuButton from "./MenuButton/MenuButton";
 type TNavItem = React.ReactElement;
 type Props = {
