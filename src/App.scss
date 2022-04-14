@@ -1,15 +1,20 @@
-@use "./styles/_colors" as c;
+@use "./styles/_colors"as c;
 
 
 :root,
 body {
   background-color: c.$main-medium;
   color: c.$text;
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
   overflow: hidden;
 
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
 }
 
 code {
@@ -21,12 +26,15 @@ code {
 a {
   color: c.$accent;
   text-decoration: underline;
+
   &:visited {
     color: rgba($color: #d16abb, $alpha: 1.0);
   }
+
   &:hover {
     color: c.$accent-hover;
   }
+
   &:active {
     color: c.$accent-active;
   }
