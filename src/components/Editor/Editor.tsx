@@ -3,7 +3,6 @@ import MarkdownIt from "markdown-it";
 import DOMPurify from "dompurify";
 import RemoveRedEyeRoundedIcon from "@mui/icons-material/RemoveRedEyeRounded";
 import "./output.scss";
-import { Preview } from "@mui/icons-material";
 
 export interface EditorProps
   extends React.ComponentPropsWithoutRef<"textarea"> {
