@@ -1,5 +1,4 @@
 import React from "react";
-import MenuIcon from "@mui/icons-material/Menu";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 import SaveIcon from "@mui/icons-material/SaveOutlined";
 import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
@@ -8,13 +7,20 @@ import "./App.scss";
 import Navigation from "./components/Navigation/Navigation";
 import DocumentName from "./components/DocumentName/DocumentName";
 import Editor from "./components/Editor/Editor";
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+import defaultContent from "./assets/defaultContent";
+
 function App() {
   let [state, setState] = React.useState({
     docName: "markdown",
-    content: "sdas das das",
+    content: defaultContent,
     status: "idle",
     menuOpen: false,
+    mobilePreview: false,
   });
+  const toggleMobilePreview = () => {
+    setState({ ...state, mobilePreview: !state.mobilePreview });
+  };
   const handleMenuOpen = () => {
     setState({ ...state, menuOpen: !state.menuOpen });
   };
@@ -26,21 +32,19 @@ function App() {
   };
   const handleSaveDocument = () => {
     const element = document.createElement("a");
-    const blob = new Blob([state.content], { type: "text/plain;charset=utf-8" });
+    const blob = new Blob([state.content], {
+      type: "text/plain;charset=utf-8",
+    });
     const url = window.URL.createObjectURL(blob);
     element.href = url;
     element.setAttribute("download", state.docName + ".md");
     element.style.display = "none";
     document.body.appendChild(element);
     element.click();
-    console.log(blob);
-    
-    // window.URL.revokeObjectURL(url);
+    window.URL.revokeObjectURL(url);
     document.body.removeChild(element);
   };
-  // React.useEffect(() => {
-  //   console.log(state);
-  // }, [state]);
+
   const handleTextAreaInputChange = (
     e: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
@@ -62,7 +66,7 @@ function App() {
             onChange={handleDocumentNameChange}
           />
           <DeleteForeverOutlinedIcon
-            className="text-zinc-600 hover:fill-orange-600 active:fill-orange-900 cursor-pointer"
+            className="text-zinc-200/70 hover:fill-orange-600 active:fill-orange-900 cursor-pointer"
             onClick={handleDeleteDocument}
           />
           <Button
@@ -73,19 +77,27 @@ function App() {
           ></Button>
         </Navigation>
       </header>
-      <main className=" top-14 bottom-12 absolute w-full grid grid-cols-2 bg-zinc-500">
+      <main className=" top-14 bottom-0 sm:bottom-12  absolute w-full  bg-zinc-500">
         <Editor
           defaultValue={state.content}
           inputChange={handleTextAreaInputChange}
           currentInput={state.content}
+          ClickHandler={toggleMobilePreview}
+          mobilePreview={state.mobilePreview}
         ></Editor>
       </main>
 
-      <footer className="bottom-6 left-0 w-full absolute text-zinc-800">
-        {/* <span>
-          Markdown by Mihalcea Bogdan Made with React and Tailwind + Material
-          Icons - no Redux just state lifting
-        </span> */}
+      <footer className="bottom-0 left-0 w-full h-12 absolute text-zinc-800 items-center hidden sm:flex ">
+        <span>
+          <a
+          className="pl-4 text-orange-800 font-bold underline hover:text-pink-600"
+            href="https://github.com/mihalcea-bogdan-daniel/markdown-editor"
+            target={"blank"}
+          >
+            <FavoriteRoundedIcon/>
+            Link to GitHub repository
+          </a>
+        </span>
       </footer>
     </div>
   );
